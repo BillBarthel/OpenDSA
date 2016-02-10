@@ -31,19 +31,54 @@
     <script src="../../JSAV/build/JSAV.js"></script>
     <script>
   (function() {
+	var i = 0;
     var av = new JSAV("container");
     var theArray = [20, 30, 44, 54, 55, 11, 78, 14, 13, 79, 12, 98];
     var arr = av.ds.array(theArray, {indexed: true});
-    av.umsg("Text before displayInit()");
+	var arrLength = theArray.length;
+	var rand = Math.random(arrLength);
+    //av.umsg("Text before displayInit()");
     // Note: av.displayInit() will not affect the number of slides.
     // All that it will do is affect what you get to see on the
     // initial slide.
     av.displayInit();
     // We are now starting a new slide (#2)
-    av.umsg("... and text after displayInit()", {preserve: true});
-    arr.swap(1,2);
+    //av.umsg("... and text after displayInit()", {preserve: true});
+
+    //for(i = 0; i < 10; i++)
+    //{
+	//	var rand = Math.random(11);
+    //    arr.swap(2, 3);
+	//	av.step();
+    //}
+
+    arr.swap(0,7);
     av.step();
-    av.umsg("Text after av.step()");
+arr.swap(1,2);
+    av.step();
+arr.swap(2,9);
+    av.step();
+arr.swap(3,5);
+    av.step();
+arr.swap(4,10);
+    av.step();
+arr.swap(5,6);
+    av.step();
+arr.swap(6,0);
+    av.step();
+arr.swap(7,4);
+    av.step();
+arr.swap(8,1);
+    av.step();
+arr.swap(9,11);
+    av.step();
+arr.swap(10,7);
+    av.step();
+arr.swap(11,3);
+    //av.step();
+    //av.umsg("Text after av.step()");
+	//arr.swap(1,4);
+    av.step();
     av.recorded();
     // If you add av.umsg after av.recorded, it will add new slides in
     // ways that you probably do not expect and probably cannot
