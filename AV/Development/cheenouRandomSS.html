@@ -42,7 +42,7 @@
     
     av.displayInit();
     // We are now starting a new slide (#2)
-    av.umsg("Create an empty array of the same size", {preserve: false});
+    av.umsg("Swap elements based on the randomized index", {preserve: false});
     var tempArray = new Array(12);
     for(i = 0; i<tempArray.length; i++)
     {
@@ -73,11 +73,12 @@
     {
         var val = tempArray[i];
         var val2 = theArray[val];
-        for(j = 0; j < theArray.length; j++)
+        for(j = i; j < theArray.length; j++)
         {
             if(theArray[j] == val2)
             {
                 arr.swap(i,j);
+                break;
             }
         }
         av.step();
