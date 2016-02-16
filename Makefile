@@ -295,6 +295,9 @@ C2GEN: min
 slides: min
 	python $(CONFIG_SCRIPT) -s config/slides.json
 
+RSA: min
+	python $(CONFIG_SCRIPT) config/RSA.json
+
 allBooks: CS208 CS2114 CS2401 CS3114 CS3530 OpenDSA Everything testcmap
 
 nomin:
