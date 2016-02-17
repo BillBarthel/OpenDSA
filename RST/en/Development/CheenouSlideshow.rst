@@ -14,10 +14,12 @@ Swapping array elements
 -----------------------
 
 
-The following slideshow demonstrates how RSA works
+The following slideshow demonstrates how a sorted array can be randomly shuffled
+by swapping the element with the highlighted index with another element of a random 
+index of the array.
 
-.. inlineav:: RSA ss
+.. inlineav:: CheenouShuffle ss
    :output: show
 
 
-.. odsascript:: AV/Development/RSA_Slideshows/RSA.js
+.. odsascript:: AV/Development/CheenouSlideshows/CheenouShuffle.js
