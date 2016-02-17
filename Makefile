@@ -301,6 +301,9 @@ RSA: min
 CheenouSlideshow: min
 	python $(CONFIG_SCRIPT) config/CheenouSlideShow.json
 
+billslideshow: min
+	python $(CONFIG_SCRIPT) config/billslideshow.json
+
 allBooks: CS208 CS2114 CS2401 CS3114 CS3530 OpenDSA Everything testcmap
 
 nomin:
