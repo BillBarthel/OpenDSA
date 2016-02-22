@@ -298,6 +298,9 @@ slides: min
 RSA: min
 	python $(CONFIG_SCRIPT) config/RSA.json
 
+RSA2: min
+	python $(CONFIG_SCRIPT) config/RSA2.json
+
 CheenouSlideshow: min
 	python $(CONFIG_SCRIPT) config/CheenouSlideShow.json
 
