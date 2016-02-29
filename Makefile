@@ -301,8 +301,11 @@ RSA: min
 RSA2: min
 	python $(CONFIG_SCRIPT) config/RSA2.json
 
+chee: min
+	python $(CONFIG_SCRIPT) config/chee.json --local
+
 CheenouSlideshow: min
-	python $(CONFIG_SCRIPT) config/CheenouSlideShow.json
+	python $(CONFIG_SCRIPT) config/CheenouSlideShow.json --local
 
 billslideshow: min
 	python $(CONFIG_SCRIPT) config/billslideshow.json
