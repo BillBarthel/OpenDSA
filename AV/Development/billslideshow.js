@@ -20,7 +20,7 @@ $(document).ready(function () {
 		 {
 		    av.umsg("First swap slot " + i + " and " + rand);
 		 }
-		 else if(i === theArray.length)
+		 else if(i === theArray.length-1)
 		 {
 		    av.umsg("Finally swap slot " + i + " and " + rand);		 
 		 }
