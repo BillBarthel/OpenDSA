@@ -303,6 +303,9 @@ RSA2: min
 
 chee: min
 	python $(CONFIG_SCRIPT) config/chee.json --local
+	
+rsaproj: min
+	python $(CONFIG_SCRIPT) config/rsaproj.json --local
 
 CheenouSlideshow: min
 	python $(CONFIG_SCRIPT) config/CheenouSlideShow.json --local

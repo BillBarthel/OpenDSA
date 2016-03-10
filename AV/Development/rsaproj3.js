@@ -5,7 +5,7 @@ $(document).ready(function () {
 
     JSAV.init();
 
-    var av = new JSAV("RSA2_1");
+    var av = new JSAV("rsaproj3");
     var arr = av.ds.matrix([[" ", " ", " ", " ", " ", " ", " "], ["p", "q", "n", "ϕ(n)", "e", "d", "m"]]);
     av.umsg("Here is a visual of the variables neeeded");
     // Note: av.displayInit() will not affect the number of slides.

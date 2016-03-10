@@ -5,7 +5,7 @@ $(document).ready(function () {
 
     JSAV.init();
 
-    var av = new JSAV("RSA2_1");
+    var av = new JSAV("rsaproj1");
     var arr = av.ds.matrix([[" ", " ", " ", " ", " ", " ", " "], ["p", "q", "n", "ϕ(n)", "e", "d", "m"]]);
     av.umsg("Here is a visual of the variables neeeded");
     // Note: av.displayInit() will not affect the number of slides.
@@ -50,10 +50,6 @@ $(document).ready(function () {
     arr.highlight(0,6);
     av.umsg("Now, if we are given a value for 'm', we can encrypt or decrypt it.(ex. 'm' = 65)");
     arr.value(0, 6, "65");
-    av.step();
-    av.umsg("Encrypt message: c(m)=m^e mod n = (65)^17 mod 3233 = 2790");
-    av.step();
-    av.umsg("Decrypt message: m=c^d mod n = (2790)^2753 mod 3233 = 65");
     av.recorded();
     // If you add av.umsg after av.recorded, it will add new slides in
     // ways that you probably do not expect and probably cannot
