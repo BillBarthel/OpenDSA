@@ -10,3 +10,7 @@
 .jsavline{
   height: 50px;
 }
+
+.jsavarray .jsavindex {
+  width: 60px;
+}

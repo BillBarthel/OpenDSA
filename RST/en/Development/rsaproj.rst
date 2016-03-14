@@ -10,42 +10,37 @@
 Illustrate slide shows and KA exercises in an OpenDSA learning module
 =====================================================================
 
-RSA Algorithm
------------------------
+RSA Cryptosystem Algorithm
+--------------------------
 
-
-The following slideshow demonstrates how the RSA algorithm works.
+The following slideshow demonstrates how the RSA Criptosystem algorithm works.
 
 .. inlineav:: rsaproj1 ss
    :output: show
    
-RSA Computing Broken Down
------------------------
+Modular Arithmetic
+------------------
 
+The following slideshow demonstrates how module arithmetic works.
 
-The following slideshow demonstrates a more indepth of how 
-the algorithm is computing for "d".
+.. inlineav:: rsaproj4 ss
+   :output: show
+   
+Modular Multiplicative Inverse
+------------------------------
+
+The following slideshow demonstrates the computations for 'd'
 
 .. inlineav:: rsaproj ss
    :output: show
    
-RSA Encrypting Message
------------------------
+RSA Encrypting and Decrypting 
+-----------------------------
 
-
-The following slideshow demonstrates how to encrypt a given message.
+The following slideshow demonstrates how to Encrypt a message of a given value and Decrypt an
+Encrypted message
 
 .. inlineav:: rsaproj3 ss
-   :output: show
-   
-RSA Decrypting 
------------------------
-
-
-The following slideshow demonstrates how to depcrypt a given encryipted
-message.
-
-.. inlineav:: rsaproj4 ss
    :output: show
 
 Swapping array elements with a reset button 
@@ -88,6 +83,6 @@ maximum by picking it from a multiple-choice list.
 
 
 .. odsascript:: AV/Development/rsaproj1.js
+.. odsascript:: AV/Development/rsaproj4.js
 .. odsascript:: AV/Development/rsaproj.js
 .. odsascript:: AV/Development/rsaproj3.js
-.. odsascript:: AV/Development/rsaproj4.js
