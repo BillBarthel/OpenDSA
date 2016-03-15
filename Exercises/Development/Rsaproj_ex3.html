@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html data-require="math Rsaproj_ex3">
   <head>
-    <title>Pick the largest using multiple-choice</title>
+    <title>Pick The Correct Encryted Key</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
   </head>
@@ -9,18 +9,19 @@
   <body data-height="650" data-width="950">
     <div class="exercise">
       <div class="vars">
-        <var id="arrSize">KhanUtil.randRange(4, 11)</var>
-	<var id="lastIndex">arrSize - 1</var>
-        <var id="arrValues">rsaproj_ex3.initArr(arrSize)</var>
-        <var id="theAnswer">rsaproj_ex3.maxValue()</var>
+        <var id="variableIndex">KhanUtil.randRange(0, 3)</var>
+        <var id="variableValues">rsaproj_ex3.varValues(variableIndex)</var>
+        <var id="theAnswer">rsaproj_ex3.answer(variableValues)</var>
         <var id="option0">rsaproj_ex3.option[0]</var>
         <var id="option1">rsaproj_ex3.option[1]</var>
         <var id="option2">rsaproj_ex3.option[2]</var>
       </div>
       <div class="problems">
         <div id="Rsaproj_ex3p">
-          <p class="question">What is the largest value in this list of numbers? </p>
-	  <pre><var>arrValues</var></pre>
+          <p class="question">What is the Encryted Key, given the following variables? </p>
+		  <p>n = <var>variableValues[0]</var></p>
+		  <p>m = <var>variableValues[1]</var></p>
+		  <p>e = <var>variableValues[2]</var></p>
           <div class="solution"> <var>theAnswer</var></div>
 	  <ul class="choices">
 	    <li><var>option0</var></li>
@@ -28,8 +29,8 @@
 	    <li><var>option2</var></li>
 	  </ul>
           <div class="hints">
-            <p>Choose something between 0 and index <var>lastIndex</var> </p>
-            <p>This problem is really too easy for a second hint</p>
+            <p>Remember to use the RSA Encrytion equation</var> </p>
+            <p>Encryption Key = m^e mod n</p>
           </div>
         </div>
       </div>

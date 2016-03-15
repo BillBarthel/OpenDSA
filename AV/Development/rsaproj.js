@@ -1,9 +1,13 @@
 "use strict";
+/* 
+ * In this js file, we use the modular multiplicative inverse to determine d for the RSA algorithm
+ * 
+ * Author: Cheenou Thao
+ * Date: 3/10/16
+**/
 
-/* global LAMBDA */
 
 $(document).ready(function () {
-
 
     JSAV.init();
 
@@ -11,11 +15,11 @@ $(document).ready(function () {
     var arr = av.ds.matrix([["7", "8", " "], ["e", "ϕ(n)", "d"]]);
     var arr2 = av.ds.matrix([[" ", " ", " "], ["x", "a", "m"]]);
     av.umsg("Given from the first slide that e=7 and ϕ(n)=8, we use the modular multiplicative inverse of e(mod ϕ(n)) to compute for d.", {preserve: false});
-    // Note: av.displayInit() will not affect the number of slides.
-    // All that it will do is affect what you get to see on the
-    // initial slide.
+    av.label("Variables from 1.1.2 slides", {before: arr});
+    av.label("Variables of the modular multiplicative inverse equation", {before: arr2});
+    
     av.displayInit();
-    // We are now starting a new slide (#2)
+    
     av.umsg("The modular multiplicative inverse equation is: 'x ≡ a^-1 (mod m)'. So to solve for 'd' we would use: 'd ≡ e^-1 (mod ϕ(n))'");
     arr2.value(0, 0, "");
     arr2.value(0, 1, "7^-1");
@@ -40,17 +44,9 @@ $(document).ready(function () {
     arr2.highlight(0,0);
     arr.highlight(0,2);
     av.step();
-    // We are now starting a new slide (#3)
+
     av.umsg("Computed for 'd': d = 7");
     arr2.unhighlight(0,0);
     arr.unhighlight(0,2);
     av.recorded();
-    // If you add av.umsg after av.recorded, it will add new slides in
-    // ways that you probably do not expect and probably cannot
-    // control in the way that you want. As av.recorded() rewinds the
-    // slideshow, the new slides would go to the beginning of the slideshow.
-    // So, unless you are trying to add slides on-the-fly
-    // interactively, you don't want to do this.
-    // av.umsg("Text after av.recorded()");
-
 });
