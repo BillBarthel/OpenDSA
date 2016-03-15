@@ -1,9 +1,13 @@
 "use strict";
-
+/**
+ * In this file contains a slideshow explaining how to compute the Encrypt key and how to 
+ * Decrypt an Encrypt key.
+ * 
+ * Author: Cheenou Thao
+ */
 $(document).ready(function () {
 
-
-     JSAV.init();
+    JSAV.init();
 
     var av = new JSAV("rsaproj3");
     var arr = av.ds.matrix([["15", "7", "11", "7", " ", " "], ["n", "e", "m", "d", "c", "z"]]);

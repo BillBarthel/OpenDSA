@@ -14,9 +14,7 @@ What is RSA Cryptosystem?
 -------------------------
 RSA is one of the first practical public-key cryptosystems and is widely used for secure data transmission. In such a cryptosystem, 
 the encryption key is public and differs from the decryption key which is kept secret. In RSA, this asymmetry is based on the practical 
-difficulty of factoring the product of two large prime numbers, the factoring problem. RSA is made of the initial letters of the surnames 
-of Ron Rivest, Adi Shamir, and Leonard Adleman, who first publicly described the algorithm in 1977. Clifford Cocks, an English mathematician 
-working for the UK intelligence agency GCHQ, had developed an equivalent system in 1973, but it was not declassified until 1997.
+difficulty of factoring the product of two prime numbers, the factoring problem. 
 
 RSA Cryptosystem Algorithm
 --------------------------
@@ -62,22 +60,11 @@ choose to not do so, an OpenDSA utility randomly generates them for
 the user.
 
 
-.. avembed:: AV/Development/rsaproj2.html ss
-
-
-A Khan Academy Exericse with JSAV object
-----------------------------------------
-
-This example shows how to embed a Khan Academy exercise that has the user identify the 
-maximum by clicking on a JSAV array cell.
-
-.. avembed:: Exercises/Development/Rsaproj_ex1.html ka
-
 A Khan Academy Exericse with Fill-in-the-blank Question
 -------------------------------------------------------
 
 This example shows how to embed a Khan Academy exercise that has the user identify the 
-maximum by typing the number into a text box.
+maximum by typing the number into a text box. 
 
 .. avembed:: Exercises/Development/Rsaproj_ex2.html ka
 
