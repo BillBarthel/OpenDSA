@@ -36,7 +36,7 @@
 			}
 		    },
 		    "A Khan Academy Exericse with fill-in-the-blank question": {
-			"Rsaproj_ex2": {
+			"Rsa-ex1": {
 			    "long_name": "KA Exercise Example with fill in the blank question",
 			    "required": true,
 			    "points": 1.0,
