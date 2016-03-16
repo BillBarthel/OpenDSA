@@ -1,6 +1,6 @@
 "use strict";
 /* 
- * In this js file, we use the modular multiplicative inverse to determine d for the RSA algorithm
+ * In this js file, we explain on how the Extended Euclidean algorithm was used to get 'd'
  * 
  * Author: Cheenou Thao
  * Date: 3/10/16
@@ -13,43 +13,57 @@ $(document).ready(function () {
 
     var av = new JSAV("rsaproj");
     var arr = av.ds.matrix([["7", "8", " "], ["e", "ϕ(n)", "d"]]);
-    var arr2 = av.ds.matrix([[" ", " ", " "], ["x", "a", "m"]]);
-    av.umsg("Given from the first slide that e=7 and ϕ(n)=8, we use the modular multiplicative inverse of e(mod ϕ(n)) to compute for d.", {preserve: false});
-    av.label("Variables from 1.1.2 slides", {before: arr});
-    av.label("Variables of the modular multiplicative inverse equation", {before: arr2});
-    av.displayInit();
+    var arr2 = av.ds.matrix([[" ", " ", " "], ["a", "m", "x"]]);
+    av.umsg("For the RSA Algorithm, the Extended Euclidean algorithm is used to find the modular multiplicative inverse of e(mod ϕ(n)).");
     
-    // First slide
-    av.umsg("The modular multiplicative inverse equation is: 'x ≡ a^-1 (mod m)'. So to solve for 'd' we would use: 'd ≡ e^-1 (mod ϕ(n))'");
-    arr2.value(0, 0, "");
-    arr2.value(0, 1, "7^-1");
-    arr2.value(0, 2, "8");
+    av.displayInit();
+    av.umsg("We use 'e'=7 and 'ϕ(n)'=8 from slides 1.1.2 to show how the modular multiplicative inverse of e(mod ϕ(n)) is used to compute for d.");
+    av.label("Variables used from 1.1.2 slides", {before: arr});
+    av.label("Variables of the modular multiplicative inverse equation", {before: arr2});
+    av.step();
+    
+    av.umsg("The modular multiplicative inverse equation is: x ≡ a^-1 (mod m).");
+    av.step();
+    
+    av.umsg("So to solve for 'd' we would replace 'a' with 'e', 'x' with 'd' and 'm' with 'ϕ(n)':");
+    av.step();
+    
+    av.umsg(" x ≡ a^-1 (mod m) -> d ≡ e^-1 (mod ϕ(n))", {preserve: true});
+    arr2.value(0, 0, "e");
+    arr2.value(0, 1, "ϕ(n)");
+    arr2.value(0, 2, "d");
     arr2.highlight(0,0);
     arr2.highlight(0,1);
     arr2.highlight(0,2);
     av.step();
     
-    // Second slide
-    av.umsg("To find the solution for the modular multiplicative inverse, we multiply both 'x' and 'a' by 'a' such that we get the solution form of: 'ax ≡ 1 (mod m)'");
+    av.umsg("To find the solution for d ≡ e^-1 (mod ϕ(n)), we multiply both 'd' and 'e^-1' by 'e' such that we get the solution form of: e*d ≡ 1 (mod m)");
     arr2.unhighlight(0,0);
     arr2.unhighlight(0,1);
     arr2.unhighlight(0,2);
     av.step();
     
-    // Third slide
-    av.umsg("Now that we have that we are in the form of 'ax ≡ 1 (mod m)', we just compute for x, such that a*x is one greater than a multiple of m. (7*x = 8n+1) => (7*(7) = 8*(6)+1) => 49 = 48+1");
-    arr2.unhighlight(0,0);
-    arr2.unhighlight(0,1);
-    arr2.unhighlight(0,2);
-    arr2.value(0, 0, "7");
-    arr.value(0, 2, "7");
-    arr2.highlight(0,0);
-    arr.highlight(0,2);
+    av.umsg("Now that we have that we are in the form of e*d ≡ 1 (mod ϕ(n)), we just compute for d, such that e*d is one greater than a multiple of m:");
+    av.step();
+    
+    av.umsg(" (7*d = 8n+1)", {preserve: true});
+    av.step();
+    
+    av.umsg(" => 7*(7) = 8*(6)+1)", {preserve: true});
+    av.step();
+    
+    av.umsg(" => 49 = 48+1", {preserve: true});
+    av.step();
+    
+    av.umsg(": True, so d = 7.", {preserve: true});
     av.step();
 
-    // Fourth slide
-    av.umsg("Computed for 'd': d = 7");
-    arr2.unhighlight(0,0);
+    av.umsg("", {preserve: true});
+    arr.highlight(0,2);
+    arr.value(0,2,7);
+    av.step();
+    
+    av.umsg("", {preserve: true});
     arr.unhighlight(0,2);
     av.recorded();
 });

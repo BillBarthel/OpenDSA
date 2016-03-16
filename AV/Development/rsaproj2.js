@@ -1,5 +1,10 @@
 "use strict";
-/*global alert: true, ODSA */
+/**
+ * This file computes the encryption key based on either the user's inputs for 'p', 'q', 'm', and 'e'
+ * or on randomly generated values for those variables.
+ * 
+ * Author: Cheenou Thao
+*/
 
 (function ($) {
   var av;
@@ -8,59 +13,170 @@
 function runit() {
     ODSA.AV.reset(true);
 
-    // Validate the array values a user enters or generate an array of
-    // random numbers < 100 of the size selected in the dropdown list
-    // if none are provided
-    var theArray = ODSA.AV.processArrayValues(100);
-
-    // If theArray wasn't filled properly, we generate our own 
-    if (!theArray) {
-	theArray = [];
-	for (i = 0; i < 12; i++) {
-	    theArray.push(Math.trunc(50 * Math.random() + 10));
+    var theArray = [];
+    var prime1;
+    var prime2;
+    var phi;
+    var primeArray = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31];
+    var max_e = 12;
+    var max_m = 21;
+    var eValue;
+    var mValue;
+    var inputPrimeArr;
+    var validPrime = false;
+    var useGeneratedArr;
+    var temp;
+    var temp2;
+    var nValue;
+    
+    alert("***Beind the scene, ϕ(n) has been produced by using (p-1)*(q-1) in order to validate the 'e' value***");
+    
+    inputPrimeArr = document.getElementById("primeNumbers").value.trim().split(" ");
+    mValue = parseInt(document.getElementById("mValue").value);
+    eValue = parseInt(document.getElementById("eValue").value);
+    
+    // Checks for valid input
+    if(mValue < max_m && mValue > 0 && eValue < max_e && eValue > 0){
+        for(var i = 0; i < primeArray.length; i++)
+        {
+            if(inputPrimeArr[0] == primeArray[i])
+                validPrime = true;
+        }
+        if(validPrime == true)
+        {
+            validPrime = false;
+            for(var i = 0; i < primeArray.length; i++)
+            {
+                if(inputPrimeArr[1] == primeArray[i])
+                    validPrime = true;
+            }
+            if (validPrime == false)
+                useGeneratedArr=true;
+            else
+            {
+                phi = (inputPrimeArr[0]-1) * (inputPrimeArr[1]-1);
+                nValue = inputPrimeArr[0] * inputPrimeArr[1];
+                if(nValue < mValue || phi < eValue)
+                    useGeneratedArr = true;
+            }
+        }
+        else
+            useGeneratedArr = true;
+    }
+    else
+        useGeneratedArr = true;
+    
+    // If empty input or invalid input, then random values get generated
+    if(useGeneratedArr == true){
+        alert("No input was entered or invalid input! Using random generated values!");
+        prime1 = primeArray[Math.floor((Math.random() * 11))];
+        prime2 = primeArray[Math.floor((Math.random() * 11))];
+        while(prime2 == prime1)
+        {
+            prime2 = primeArray[Math.floor((Math.random() * 11))];      
+        }   
+        
+        nValue = prime1 * prime2;
+        phi = (prime1 -1) * (prime2 -1);
+        if(nValue < max_m)
+        {
+            temp = Math.floor((Math.random() * (nValue-1)) + 1);
+            temp2 = Math.floor((Math.random() * (nValue-1)) + 1);
+        }
+        else
+        {
+            temp = Math.floor((Math.random() * max_m) + 1);
+            temp2 = Math.floor((Math.random() * max_e) + 1);
+        }
+        
+        theArray = [prime1, prime2, phi, temp, temp2];
 	}
+    else
+    {
+        theArray = [inputPrimeArr[0], inputPrimeArr[1], phi, mValue, eValue];
     }
 
-    av = new JSAV($('.avcontainer'));
 
-    var arr = av.ds.array(theArray, {indexed: true});
-    av.umsg("Text before displayInit()");
-    // Note: av.displayInit() will not affect the number of slides.
-    // All that it will do is affect what you get to see on the
-    // initial slide.
+    av = new JSAV($('.avcontainer'), $('.jsavindex'));
+    var arr = av.ds.matrix([[theArray[0], theArray[1], theArray[2], theArray[3], theArray[4], " ", " "], ["p", "q", "ϕ(n)", "m", "e", "n", "c(m)"]]);
+    var n = arr.value(0, 0) * arr.value(0, 1);
+    var mToTheE = Math.pow(arr.value(0, 3), arr.value(0, 4));
+    var encryptKey = mToTheE % n;
+    console.log(n);
+    
+    av.umsg("First step into computing the Encypt key is to get 'n', which is done by multiplying the two prime numbers (p * q).");
+
     av.displayInit();
-    // We are now starting a new slide (#2)
-    av.umsg("... and text after displayInit()", {preserve: true});
-    arr.swap(3,7);
+
+    //First slide
+    av.umsg("n = p * q");
+    arr.highlight(0,0);
+    arr.highlight(0,1);
     av.step();
-    // We are now starting a new slide (#3)
-    av.umsg("Text after av.step()");
+    
+    //Second Slide
+    av.umsg(" = " + theArray[0] + " * " + theArray[1], {preserve: true});
+    av.step();
+    
+    //Third Slide
+    av.umsg(" = " + n, {preserve: true});
+    arr.unhighlight(0,0);
+    arr.unhighlight(0,1);
+    arr.highlight(0,5);
+    arr.value(0,5,n);
+    av.step();
+    
+    //Fourth Slide
+    av.umsg("Now that we have 'n', we can just use the Encryption equation: c(m) = m^e mod n");
+    arr.unhighlight(0,5);
+    av.step();
+    
+    //Fifth Slide
+    av.umsg("m^e = " + theArray[3] + "^" + theArray[4]);
+    arr.highlight(0,3);
+    arr.highlight(0,4);
+    av.step();
+    
+    //Sixth Slide
+    av.umsg(" = " + mToTheE, {preserve: true});
+    arr.unhighlight(0,3);
+    arr.unhighlight(0,4);
+    av.step();
+    
+    //Seventh Slide
+    av.umsg("... Now that we know m^e = " + mToTheE + ", we just mod n: ", {preserve: true});
+    av.step();
+    
+    //Eighth Slide
+    av.umsg( + mToTheE + " mod " + n, {preserve: true});
+    av.step();
+    
+    //Nineth Slide
+    av.umsg(" = " + encryptKey, {preserve: true});
+    arr.highlight(0,6);
+    arr.value(0,6,encryptKey);
+    av.step();
+    
+    //Tenth Slide
+    av.umsg("Encryption key: c(" + arr.value(0,3) + ") = " + encryptKey);
+    av.step();
+    
+    //Eleventh Slide
+    av.umsg("c(m) = " + encryptKey);
+    arr.unhighlight(0,6);
     av.recorded();
-    // If you add av.umsg after av.recorded, it will add new slides in
-    // ways that you probably do not expect and probably cannot
-    // control in the way that you want. As av.recorded() rewinds the
-    // slideshow, the new slides would go to the beginning of the slideshow.
-    // So, unless you are trying to add slides on-the-fly
-    // interactively, you don't want to do this.
-    // av.umsg("Text after av.recorded()");
 
 }
-
 
 
 function about() {
-   alert("Simple array visualization");
+   alert("Demonstrating how to Encrypt a message using RSA Cryptosystem Algorithm");
 }
   
 function help() {
-   alert("Help for simple array visualization");
+   alert("Help for simple RSA Encryption");
 }
   
-// Initialize the arraysize dropdown list
-ODSA.AV.initArraySize(10, 16, 12); // Between 10 and 16, with default at 12
-
-
-// Connect action callbacks to the HTML entities
 $('#about').click(about);
 $('#runit').click(runit);
 $('#help').click(help);
