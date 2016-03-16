@@ -19,7 +19,7 @@ difficulty of factoring the product of two prime numbers, the factoring problem.
 Basics of RSA Algorithm
 -----------------------
 
-The following slideshow demonstrates how the RSA algorithm works.
+The following slideshow demonstrates the generation of the initial variables needed for the RSA algorithm to function.
 
 .. inlineav:: rsaproj1 ss
    :output: show

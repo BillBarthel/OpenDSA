@@ -12,15 +12,15 @@ $(document).ready(function () {
     JSAV.init();
 
     var av = new JSAV("rsaproj1");
-    var arr = av.ds.matrix([[" ", " ", " ", " ", " ", " ", " "], ["p", "q", "n", "ϕ(n)", "e", "d", "m"]], {'width': '60px'});
+    var arr = av.ds.matrix([[" ", " ", " ", " ", " ", " ", " "], ["p", "q", "n", "ϕ(n)", "e", "m", "d"]], {'width': '60px'});
     
-    av.umsg("Shown here is a matrix of variables needed and it's values.");
+    av.umsg("Shown here is a matrix of variables needed for the RSA algorithm.  Let's compute them!");
     av.displayInit();
     
     av.umsg("The first step is to choose two different prime numbers for 'p' and 'q'.");
     av.step()
     
-    av.umsg("For an example p=3 and q=5");
+    av.umsg("For this example, p=3 and q=5");
     arr.value(0, 0, "3");
     arr.value(0, 1, "5");
     arr.highlight(0,0);
@@ -32,7 +32,7 @@ $(document).ready(function () {
     arr.unhighlight(0,1);
     av.step()
     
-    av.umsg("To get 'n', we must mulitply p and q: ");
+    av.umsg("To get 'n', we must multiply p and q: ");
     arr.highlight(0,0);
     arr.highlight(0,1);
     av.step();
@@ -47,11 +47,11 @@ $(document).ready(function () {
     arr.value(0, 2, "15");
     av.step();
     
-    av.umsg("The third step is to get ϕ(n).");
+    av.umsg("The third step is to generate ϕ(n).");
     arr.unhighlight(0,2);
     av.step()
     
-    av.umsg("To get ϕ(n). We must multply (p-1) and (q-1):");
+    av.umsg("To generate ϕ(n), We must multiply (p-1) and (q-1):");
     av.step();
     
     av.umsg(" (3-1) * (5-1)", {preserve: true});
@@ -69,7 +69,7 @@ $(document).ready(function () {
     arr.unhighlight(0,3);
     av.step()
     
-    av.umsg("'e' can be any number between 1 and ϕ(n). For an example, 7.");
+    av.umsg("'e' can be any number between 0 and ϕ(n). For this example, 7.");
     av.step()
     
     av.umsg("", {preserve: true});
@@ -77,57 +77,34 @@ $(document).ready(function () {
     arr.value(0, 4, "7");
     av.step()
     
-    av.umsg("In the fifth step now, we compute for 'd'.");
+	 av.umsg("Next, we will choose any positive integer, 'm', to represent the data we want to we want to encrypt.");
     arr.unhighlight(0,4);
-    av.step()
+    av.step();
     
-    av.umsg("To compute for 'd', we need to use the Extended Euclidean Algorithm. (Extended Euclidean Algorithm in section 1.1.3)");
-    av.step()
-    
-    av.umsg("Using the Extended Euclide Algorithm, we get an equation of a*x mod b = 1.");
-    av.step()
-    
-    av.umsg("From here we replace those variables with: e*d mod(ϕ(n)) = 1.");
-    av.step()
-    
-    av.umsg("Now, we just plug in our values for those variables we already computed: ");
-    av.step()
-    
-    av.umsg("'e' = 7, ϕ(n) = 8.", {preserve: true});
-    arr.highlight(0,3);
-    arr.highlight(0,4);
-    av.step()
-    
-    av.umsg(" From here we just need to find a value for 'd', such that 7*d is one greater than a multiple of 8.");
-    av.step()
-    
-    av.umsg("So basically, we need to solve for 7*d = 8*x +1; where x is a positive integer: In this case, 7*(7) = 8*(6)+1 or 49 = 48+1.");
-    av.step()
-    
-    av.umsg(" As a result, 'd' = 7.");
-    arr.unhighlight(0,3);
-    arr.unhighlight(0,4);
+    av.umsg(" 'm' = 11.", {preserve: true});
     arr.highlight(0,5);
-    arr.value(0, 5, "7");
-    av.step()
+    arr.value(0, 5, "11");
+    av.step();
     
-    av.umsg("With 'd' computed, all we need is a value for 'm' and we can start encrypting.");
+    av.umsg("Later, we will run 'm' through an equation and encrypt it.  'm' will no longer = 11, but a different number that represents 11.  That way, if the information were to be maliciously intercepted, the attacker wouldn't know what the actual data they intercepted is.");
+    av.step();
+    av.umsg("Check Slides 1.1.4 for Encrypting and Decrypting."); 
+    av.step();
+    
+    av.umsg("Finally, we will compute for 'd'.");
     arr.unhighlight(0,5);
-    av.step()
-    
-    av.umsg("'m' could be any positve integer value. For our example, we'll use 11.");
     av.step();
     
-    av.umsg(" 'm' = 7.", {preserve: true});
-    arr.highlight(0,6);
-    arr.value(0, 6, "11");
+    av.umsg("'d' is the private key needed to be able to return the encrypted form of 'm' back into readable data.  It is also the most difficult variable to calculate in this algorithm and is what makes the algorithm so secure.");
     av.step();
     
-    av.umsg("Now that all of these variables are accounted for, we can start Encrypting.");
+    av.umsg("To keep this slide show simple, given the previous variables, our value for 'd' is 7.  Because of the complexity of finding this variable, a step by step slide show is given below in 1.1.3.");
+	 arr.highlight(0,6);
+    arr.value(0, 6, "7");    
+    av.step();
+    
+    av.umsg("Now that we have the boring stuff out of the way, it's time to get to the fun stuff!");
     arr.unhighlight(0,6);
-    arr.value(0, 6, "11");
-    av.step();
-    av.umsg("Check Slides 1.1.4 for Encrypting and Decrypting.");
+    av.step()
     av.recorded();
-
 });
