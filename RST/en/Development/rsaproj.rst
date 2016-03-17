@@ -53,18 +53,7 @@ different prime numbers and leave a space in between them. Other restrictions ar
 .. avembed:: AV/Development/rsaproj2.html ss
 
 
-RSA Encrypting Exercise 1
------------------------
-
-In this exercise, you are given two variables needed to solve the equation.
-
-.. avembed:: Exercises/Development/Rsa-ex1.html ka
-
-
-.. odascript:: AV/Development/Rsa-ex1.js
-
-
-RSA Encrypting Exercise 2
+RSA Encrypting Exercise
 -----------------------
 
 In this exercise, you are given the three variables needed to compute
