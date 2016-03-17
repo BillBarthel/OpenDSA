@@ -77,16 +77,16 @@ $(document).ready(function () {
     arr.value(0, 4, "7");
     av.step()
     
-	 av.umsg("Next, we will choose any positive integer that is less than 'n' to represent our public encryption key.  We will call this variable 'm' and set it to 11 for this example.");
+	 av.umsg("Next, we will choose any positive integer that is less than 'n' to represent our public encryption key.  We will call this variable 'm' and set it to 8 for this example.");
     arr.unhighlight(0,4);
     av.step();
     
-    av.umsg(" 'm' = 11.", {preserve: true});
+    av.umsg(" 'm' = 8.", {preserve: true});
     arr.highlight(0,5);
-    arr.value(0, 5, "11");
+    arr.value(0, 5, "8");
     av.step();
     
-    av.umsg("Later, we will run 'm' through an equation and encrypt it.  'm' will no longer = 11, but a different number that represents an encrypted version of 11.  That way, if the information were to be maliciously intercepted, the attacker wouldn't know what the actual data they intercepted is.");
+    av.umsg("Later, we will run 'm' through an equation and encrypt it.  'm' will no longer = 8, but a different number that represents an encrypted version of 8.  That way, if the information were to be maliciously intercepted, the attacker wouldn't know what the actual data they intercepted is.");
     av.step();
     av.umsg("Check Slides 1.1.4 for more detailed information on Encrypting and Decrypting."); 
     av.step();

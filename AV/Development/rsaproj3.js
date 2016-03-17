@@ -10,7 +10,7 @@ $(document).ready(function () {
     JSAV.init();
 
     var av = new JSAV("rsaproj3");
-    var arr = av.ds.matrix([["15", "7", "11", "7", " "], ["n", "e", "m", "d", "c"]]);
+    var arr = av.ds.matrix([["15", "7", "8", "7", " "], ["n", "e", "m", "d", "c"]]);
 
     av.umsg("We have been talking a lot about public keys and private keys in the last few slide shows, but what does it all mean?");
     av.step();
@@ -30,12 +30,12 @@ $(document).ready(function () {
     av.umsg("So the first thing to compute is m^e:");
     av.step();
     
-    av.umsg(" 11^7", {preserve:true});
+    av.umsg(" 8^7", {preserve:true});
     arr.highlight(0,1);
     arr.highlight(0,2);
     av.step();
     
-    av.umsg(" = 19487171", {preserve:true});
+    av.umsg(" = 2097152", {preserve:true});
     arr.unhighlight(0,1);
     arr.unhighlight(0,2);
     av.step();
@@ -44,34 +44,34 @@ $(document).ready(function () {
     arr.highlight(0,0);
     av.step();
     
-    av.umsg(" 19487171 mod 15", {preserve:true});
+    av.umsg(" 2097152 mod 15", {preserve:true});
     arr.unhighlight(0,0);
     av.step();
     
-    av.umsg(" = 11", {preserve:true});
+    av.umsg(" = 2", {preserve:true});
     arr.highlight(0,4);
-    arr.value(0, 4, "11");
+    arr.value(0, 4, "2");
     av.step();
 
-    av.umsg("There you have it!  The data you wanted to send is no longer recognizable.  But now that it's encrypted, how will Joe be able to get the origonal data?");
+    av.umsg("There you have it!  The data you wanted to send is no longer recognizable.  The decrypted value of the data was 8, but after being encrypted it's representation is 2.  But now that it's encrypted, how will Joe be able to get the original data?");
     av.step();
 
     av.umsg("Luckily for Joe, when he generated all of the necessary RSA variables, he kept his 'd' value locked away privately on his computer where nobody else could access it.");
+    arr.unhighlight(0,4);
     av.step();
  
     av.umsg("To decrypt a message given a 'c' value, we use the equation 'c^d mod n = m', where the encrypted data will return to normal!");
-    arr.unhighlight(0,4);
     av.step();
     
     av.umsg("So the first thing to compute is c^d:");
     av.step();
     
-    av.umsg(" 11^7", {preserve:true});
+    av.umsg(" 2^7", {preserve:true});
     arr.highlight(0,3);
     arr.highlight(0,4);
     av.step();
     
-    av.umsg(" = 19487171", {preserve:true});
+    av.umsg(" = 128", {preserve:true});
     arr.unhighlight(0,3);
     arr.unhighlight(0,4);
     av.step();
@@ -79,10 +79,10 @@ $(document).ready(function () {
     av.umsg("Now that we got c^d, we mod that answer by n to get m:");
     av.step();
     
-    av.umsg(" 19487171 mod 15", {preserve:true});
+    av.umsg(" 128 mod 15", {preserve:true});
     av.step();
     
-    av.umsg(" = 11", {preserve:true});
+    av.umsg(" = 8", {preserve:true});
     arr.highlight(0,2);
     av.step();
     
