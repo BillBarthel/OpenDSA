@@ -36,8 +36,7 @@ The following slideshow demonstrates the generation of our private key, 'd', by 
 RSA Encrypting and Decrypting 
 -----------------------------
 
-The following slideshow demonstrates how to Encrypt (c(m)=m^e mod n) a message of a given value and Decrypt (z(c)=c^d mod n) an
-Encrypted message
+Now that we have generated all of our variables, along with our public and private keys, what do we do with them?
 
 .. inlineav:: rsaproj3 ss
    :output: show

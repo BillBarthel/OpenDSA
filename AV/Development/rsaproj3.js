@@ -10,11 +10,21 @@ $(document).ready(function () {
     JSAV.init();
 
     var av = new JSAV("rsaproj3");
-    var arr = av.ds.matrix([["15", "7", "11", "7", " ", " "], ["n", "e", "m", "d", "c(m)", "z(c)"]]);
+    var arr = av.ds.matrix([["15", "7", "11", "7", " "], ["n", "e", "m", "d", "c"]]);
 
-    av.umsg("Using values from slides 1.1.2, we will compute the Encrypt key and Decrypt an Encrypted key");
+    av.umsg("We have been talking a lot about public keys and private keys in the last few slide shows, but what does it all mean?");
+    av.step();
+    
     av.displayInit();
-    av.umsg("To encrypt a message, we use the equation 'c(m)=m^e mod n'");
+    av.umsg("Let's say you have some confidential information that you want to send your friend, Joe.  Joe has conveniently generated the same public variables as seen in slideshow 1.1.2.");
+    av.step();
+
+    av.umsg("You take the data you want to send securely and attach Joe's public key, 'm', to that data.");
+    arr.highlight(0,2);
+    av.step();
+
+    av.umsg("To encrypt your data, we send it through the equation 'm^e mod n = c', where 'c' is the encrypted version of your original data, 'm'.");
+    arr.unhighlight(0,2);
     av.step();
     
     av.umsg("So the first thing to compute is m^e:");
@@ -30,18 +40,26 @@ $(document).ready(function () {
     arr.unhighlight(0,2);
     av.step();
     
-    av.umsg("Now that we got m^e, we mod n to get c:");
+    av.umsg("Now that we got m^e, we mod that answer by n to get c:");
+    arr.highlight(0,0);
     av.step();
     
-    av.umsg(" 19487171 mod(15)", {preserve:true});
+    av.umsg(" 19487171 mod 15", {preserve:true});
+    arr.unhighlight(0,0);
     av.step();
     
     av.umsg(" = 11", {preserve:true});
     arr.highlight(0,4);
     arr.value(0, 4, "11");
     av.step();
+
+    av.umsg("There you have it!  The data you wanted to send is no longer recognizable.  But now that it's encrypted, how will Joe be able to get the origonal data?");
+    av.step();
+
+    av.umsg("Luckily for Joe, when he generated all of the necessary RSA variables, he kept his 'd' value locked away privately on his computer where nobody else could access it.");
+    av.step();
  
-    av.umsg("To decrypt a message given a 'c' value, we use the equation 'z(c)=c^d mod n', which should theoretically be equal to 'm'");
+    av.umsg("To decrypt a message given a 'c' value, we use the equation 'c^d mod n = m', where the encrypted data will return to normal!");
     arr.unhighlight(0,4);
     av.step();
     
@@ -58,19 +76,22 @@ $(document).ready(function () {
     arr.unhighlight(0,4);
     av.step();
     
-    av.umsg("Now that we got c^d, we mod n to get m:");
+    av.umsg("Now that we got c^d, we mod that answer by n to get m:");
     av.step();
     
-    av.umsg(" 19487171 mod(15)", {preserve:true});
+    av.umsg(" 19487171 mod 15", {preserve:true});
     av.step();
     
     av.umsg(" = 11", {preserve:true});
-    arr.highlight(0,5);
-    arr.value(0, 5, "11");
+    arr.highlight(0,2);
     av.step();
     
-    av.umsg("This is how Encrypting and Decrypting are done using the RSA algorithm");
-    arr.unhighlight(0,5);
+    av.umsg("Joe has successfully decrypted your data and the algorithm is complete!");
+    arr.unhighlight(0,2);
+    av.step();
+
+    av.umsg("This may not seem overly complex with the variables we used, but in the real world much larger variable values are used when the RSA algorithm is used for security.  Without knowledge of the proper variables to use, it would take decades to brute force your way into deciphering a private key.");
+
     av.recorded();
 
 });
