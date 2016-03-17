@@ -69,7 +69,7 @@ $(document).ready(function () {
     arr.unhighlight(0,3);
     av.step()
     
-    av.umsg("'e' can be any number between 0 and ϕ(n). For this example, 7.");
+    av.umsg("'e' can be any number between 2 and ϕ(n) as long as they have no common factors besides the number 1. For this example, 7.");
     av.step()
     
     av.umsg("", {preserve: true});
@@ -77,7 +77,7 @@ $(document).ready(function () {
     arr.value(0, 4, "7");
     av.step()
     
-	 av.umsg("Next, we will choose any positive integer, 'm', to represent the data we want to we want to encrypt.");
+	 av.umsg("Next, we will choose any positive integer that is less than 'n' to represent our public encryption key.  We will call this variable 'm' and set it to 11 for this example.");
     arr.unhighlight(0,4);
     av.step();
     
@@ -86,16 +86,16 @@ $(document).ready(function () {
     arr.value(0, 5, "11");
     av.step();
     
-    av.umsg("Later, we will run 'm' through an equation and encrypt it.  'm' will no longer = 11, but a different number that represents 11.  That way, if the information were to be maliciously intercepted, the attacker wouldn't know what the actual data they intercepted is.");
+    av.umsg("Later, we will run 'm' through an equation and encrypt it.  'm' will no longer = 11, but a different number that represents an encrypted version of 11.  That way, if the information were to be maliciously intercepted, the attacker wouldn't know what the actual data they intercepted is.");
     av.step();
-    av.umsg("Check Slides 1.1.4 for Encrypting and Decrypting."); 
+    av.umsg("Check Slides 1.1.4 for more detailed information on Encrypting and Decrypting."); 
     av.step();
     
     av.umsg("Finally, we will compute for 'd'.");
     arr.unhighlight(0,5);
     av.step();
     
-    av.umsg("'d' is the private key needed to be able to return the encrypted form of 'm' back into readable data.  It is also the most difficult variable to calculate in this algorithm and is what makes the algorithm so secure.");
+    av.umsg("'d' is the private key needed to be able to return the encrypted representation of 'm' back into readable data.  It is also the most difficult variable to calculate in this algorithm and is what makes the algorithm so secure.");
     av.step();
     
     av.umsg("To keep this slide show simple, given the previous variables, our value for 'd' is 7.  Because of the complexity of finding this variable, a step by step slide show is given below in 1.1.3.");

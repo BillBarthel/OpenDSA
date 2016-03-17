@@ -28,7 +28,7 @@ The following slideshow demonstrates the generation of the initial variables nee
 Extended Euclidean Algorithm
 ----------------------------
 
-The following slideshow demonstrates the Extended Euclidean algorithm works
+The following slideshow demonstrates the generation of our private key, 'd', by using the Extended Euclidean algorithm.
 
 .. inlineav:: rsaproj ss
    :output: show
